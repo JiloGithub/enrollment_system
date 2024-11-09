@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap');
+
+:root {
+    --bs-blue: #4e73df;
+    --bs-red: #df4e4e;
+    --bs-green: #44ca7c;
+    --bs-orange: #ec7f25;
+
+}
+
+::-webkit-scrollbar {
+    max-width: 3px;
+}
+
+::-webkit-scrollbar-track {
+
+    background-color: #f1f1f1;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+* {
+
+    font-family: "Poppins", sans-serif;
+
+}
+
+.main-nav {
+    top: 0;
+    position: sticky;
+    z-index: 10;
+}
+
+.main-nav .navbar-nav .nav-link span {
+    font-size: 13px;
+}
+
+.card .card-header {
+    color: #fff;
+    background-color: var(--bs-blue);
+}
+
+.logo {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.navbar .container-fluid .collapse .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar .container-fluid .collapse .navbar-nav .nav-link:hover {
+    color: #ffffff8c;
+}
+
+/* ----- Button Properties ----- */
+.btn-blue {
+    color: #fff;
+    background-color: var(--bs-blue);
+}
+
+.btn-blue:hover {
+    color: #fff;
+}
+
+
+.btn-red {
+    color: #fff;
+    background-color: var(--bs-red);
+}
+
+.btn-red:hover {
+    color: #fff;
+}
+
+.btn-green {
+    color: #fff;
+    background-color: var(--bs-green);
+}
+
+.btn-green:hover {
+    color: #fff;
+}
+
+
+/* ----- End ----- */
+
+
+
+
+
+/* ------ Admin CSS Properties ------ */
+.admin-login-nav {
+    color: #fff;
+    background-color: var(--bs-blue);
+}
+
+.admin-body {
+    background-color: var(--bs-blue);
+}
+
+/* li {
+    list-style: none;
+} */
+
+a {
+    text-decoration: none;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+#sidebar {
+    min-width: 264px;
+    max-width: 264px;
+    min-height: 100vh;
+    max-height: 100vh;
+    transition: all 0.35s ease-in-out;
+    background-color: var(--bs-blue);
+    flex-direction: column;
+    overflow: auto;
+}
+
+#sidebar.collapsed {
+    margin-left: -264px;
+}
+
+.toggle-btn {
+    background: transparent;
+    cursor: pointer;
+    border: 0;
+}
+
+.toggle-btn i {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--bs-blue);
+}
+
+.admin-navbar {
+    padding: 1.15rem 1.5rem;
+}
+
+.sidebar-logo {
+    padding: 1.15rem 1.5rem;
+    text-align: center;
+}
+
+.sidebar-nav {
+    flex: 1 1 auto;
+}
+
+.sidebar-header {
+    color: #f9f6f657;
+    font-size: .75rem;
+    padding: 1.5rem 1.5rem .375rem;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #fff;
+    position: relative;
+    transition: all 0.35s;
+    display: block;
+}
+
+a.sidebar-link:hover {
+    background-color: #fff;
+    color: var(--bs-blue);
+
+}
+
+
+.sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-dropdown .sidebar-link {
+    font-size: 13px;
+    background-color: #f9f6f61e;
+}
+
+.admin-navbar .btn {
+    background: transparent;
+    cursor: pointer;
+    border: 0;
+    color: var(--bs-blue);
+    font-weight: bold;
+}
+
+.admin-navbar .btn:focus {
+    box-shadow: none;
+}
+
+@media (max-width:768px) {
+    .sidebar-toggle {
+        margin-left: -264px;
+    }
+
+    #sidebar.collapsed {
+        margin-left: 0;
+    }
+}
+
+.main .dash-card1 {
+    background-color: var(--bs-green);
+    color: #fff;
+}
+
+.main .dash-card1 .card-header {
+    background-color: var(--bs-green);
+    color: #fff;
+}
+
+.main .dash-card2 {
+    background-color: var(--bs-red);
+    color: #fff;
+}
+
+.main .dash-card2 .card-header {
+    background-color: var(--bs-red);
+    color: #fff;
+}
+
+.main .dash-card3 {
+    background-color: var(--bs-blue);
+    color: #fff;
+}
+
+.main .dash-card3 .card-header {
+    background-color: var(--bs-blue);
+    color: #fff;
+}
+
+.main .dash-card4 {
+    background-color: var(--bs-orange);
+    color: #fff;
+}
+
+.main .dash-card4 .card-header {
+    background-color: var(--bs-orange);
+    color: #fff;
+}
+
+.main .dash-card1 i,
+.dash-card2 i,
+.dash-card3 i,
+.dash-card4 i {
+    font-size: 30px;
+}
+
+/* ------ End ------ */
