@@ -63,9 +63,13 @@ $home = $home->login();
                         Schedule
                     </div>
                     <div class="card-body">
-                        <?php foreach ($schedule as $row): ?>
-                            <li><a href="main-schedule.php?id=<?= $row->SCHEDULE_ID ?>"><?= $row->SC_INSTRUCTOR ?></a></li>
-                        <?php endforeach; ?>
+                        <?php if ($schedule): ?>
+                            <?php foreach ($schedule as $row): ?>
+                                <li><a href="main-schedule.php?id=<?= $row->SCHEDULE_ID ?>"><?= $row->SC_INSTRUCTOR ?></a></li>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <li>No scheduled!</li>
+                        <?php endif; ?>
                     </div>
                 </div>
 

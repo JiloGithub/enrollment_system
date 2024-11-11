@@ -30,7 +30,7 @@
                     <a href="student-list.php" class="sidebar-link"><i class="fas fa-list"></i> Student List</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link"><i class="fa fa-graduation-cap"></i> Academic Record</a>
+                    <a href="academic-record.php" class="sidebar-link"><i class="fa fa-graduation-cap"></i> Academic Record</a>
                 </li>
             </ul>
         </li>
@@ -47,10 +47,10 @@
             <a href="subject.php" class="sidebar-link"> <i class="fas fa-fw fa-book"></i>
                 <span>Subjects</span></a>
         </li>
-        <li class="sidebar-item">
+        <!-- <li class="sidebar-item">
             <a href="program.php" class="sidebar-link"><i class="fas fa-chalkboard-teacher"></i>
                 <span>Program</span></a>
-        </li>
+        </li> -->
         <!-- <li class="sidebar-item">
             <a href="section.php" class="sidebar-link"><i class="fas fa-building"></i>
                 <span>Sections</span></a>

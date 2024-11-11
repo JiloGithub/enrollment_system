@@ -28,7 +28,7 @@ class File
 
 	public function validate()
 	{
-		if (in_array($this->ext, array('jpg', 'jpeg', 'png',))) {
+		if (in_array($this->ext, array('jpg', 'jpeg', 'png', 'webp'))) {
 			return true;
 		} else {
 			return false;

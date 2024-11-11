@@ -40,6 +40,7 @@ class HomeClass extends Database
                     Session::put('student_password', $result->ST_PASSWORD);
                     Session::put('student_profile', $result->ST_PROFILE);
                     Session::put('student_year_level', $result->ST_YEAR_LEVEL);
+                    Session::put('student_strand', $result->ST_TRACK_STRAND);
 
                     Redirect::to('dashboard');
                 } else {

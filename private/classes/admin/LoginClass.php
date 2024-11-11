@@ -20,7 +20,7 @@ class LoginClass extends Database
                     Session::put('admin_email', $result->EMAIL);
                     Session::put('admin_password', $result->PASSWORD);
 
-                    Redirect::to('admin/dashboard', 'Welcome back ' . $result->USERNAME . '!', 'success');
+                    Redirect::to('admin/dashboard');
                 } else {
                     Redirect::to('admin/index', 'Email or Password is incorrect!', 'danger');
                 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 07:40 AM
+-- Generation Time: Nov 11, 2024 at 01:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,8 +41,7 @@ CREATE TABLE `instructors` (
 --
 
 INSERT INTO `instructors` (`INSTRUCTOR_ID`, `INSTRUCTOR`, `MOBILE_NO`, `STATUS`) VALUES
-(2, 'Andres Bonifacio', '+639610895342', 'Active'),
-(3, 'Antonio Luna', '+639610834567', 'Active');
+(4, 'Arjhay Rigor', '09620765432', 'Active');
 
 -- --------------------------------------------------------
 
@@ -55,13 +54,6 @@ CREATE TABLE `programs` (
   `PROGRAM` varchar(255) NOT NULL,
   `DESCRIPTION` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `programs`
---
-
-INSERT INTO `programs` (`PROGRAM_ID`, `PROGRAM`, `DESCRIPTION`) VALUES
-(10, 'Junior High School', 'JHS');
 
 -- --------------------------------------------------------
 
@@ -84,8 +76,7 @@ CREATE TABLE `schedules` (
 --
 
 INSERT INTO `schedules` (`SCHEDULE_ID`, `SC_INSTRUCTOR`, `SC_DAY`, `SC_FROM`, `SC_TO`, `SC_ROOM`, `SC_YEAR_LEVEL`) VALUES
-(4, 'Antonio Luna', 'MWF', '08:00', '16:00', 'Room 2', 'Grade 7'),
-(5, 'Andres Bonifacio', 'MWF', '09:31', '21:31', 'Room 1', 'Grade 8');
+(7, 'Arjhay Rigor', 'MTWTF', '08:00', '10:00', 'Room 1', 'Grade 7');
 
 -- --------------------------------------------------------
 
@@ -157,13 +148,6 @@ CREATE TABLE `students` (
   `ST_STATUS` varchar(255) NOT NULL DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`STUDENT_ID`, `ST_FNAME`, `ST_LNAME`, `ST_MI`, `ST_EXT_NAME`, `ST_PROFILE`, `ST_ADDRESS`, `ST_GENDER`, `ST_BIRTHDATE`, `ST_AGE`, `ST_CIVIL_STATUS`, `ST_PLACEBIRTH`, `ST_NATIONALITY`, `ST_RELIGION`, `ST_EMAIL`, `ST_CONTACT_NO`, `ST_GDNAME`, `ST_GD_CONTACT_NO`, `ST_YEAR_LEVEL`, `ST_SCHOOL_YEAR`, `ST_TRACK_STRAND`, `ST_USERNAME`, `ST_PASSWORD`, `ST_STATUS`) VALUES
-(1, 'Juan', 'Dela Cruz', 'D', '', '1731134155.png', 'Talavera', 'male', '2024-11-09', '23', 'Single', 'Talavera', 'Filipino', 'Catholic', 'juan@gmail.com', '09610893543', 'none', '09610893543', 'Grade 7', '2024-2025', '', 'Juan', '$2y$10$ruBkpZUWSM2kVk6O7ulDRe87ox.fHZH6eJAd9zF.9qRx4HrWrPYH.', 'Enrolled');
-
 -- --------------------------------------------------------
 
 --
@@ -182,12 +166,8 @@ CREATE TABLE `subjects` (
 --
 
 INSERT INTO `subjects` (`SUBJECT_ID`, `SUBJECT`, `YEAR_LEVEL`, `UNIT`) VALUES
-(11, 'Filipino', 'Grade 7', '3'),
-(12, 'Mathematics', 'Grade 7', '3'),
-(13, 'English', 'Grade 7', '3'),
-(14, 'Science', 'Grade 7', '3'),
-(15, 'Programming 1', 'Grade 11', '2'),
-(16, 'Programming 2', 'Grade 12', '2');
+(2, 'Math', 'Grade 7', '3'),
+(3, 'English', 'Grade 7', '3');
 
 -- --------------------------------------------------------
 
@@ -208,7 +188,7 @@ CREATE TABLE `term` (
 
 INSERT INTO `term` (`TERM_ID`, `TERM`, `STATUS`, `DATE`) VALUES
 (44, '2024-2025', 'Active', 'Nov 06, 2024'),
-(47, '2025-2026', 'Inactive', 'Nov 09, 2024');
+(47, '2025-2026', 'Inactive', 'Nov 11, 2024');
 
 -- --------------------------------------------------------
 
@@ -229,7 +209,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`USER_ID`, `USERNAME`, `EMAIL`, `PASSWORD`, `STATUS`) VALUES
-(1, 'Staff', 'Staff@gmail.com', '$2y$10$DkVV4XMFe8yeNvGdi2yxMeTPPQOm.olB7qcC8Oob6bAOJj8QBBLIK', 'Staff');
+(2, 'Admin', 'admin@admin.com', '$2y$10$VhBU/FMkWqsq.7jBLT0CFuVNSxMR2hgAv/fwma3i4xspwSM4lKJeq', 'Admin'),
+(3, 'Staff', 'staff@staff.com', '$2y$10$Nqb2JsCxdFLmh4sJsoyViu2b0ar9plEzfmIdaxWxEmKLg3X6ze7Xu', 'Staff');
 
 --
 -- Indexes for dumped tables
@@ -297,19 +278,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `instructors`
 --
 ALTER TABLE `instructors`
-  MODIFY `INSTRUCTOR_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `INSTRUCTOR_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `PROGRAM_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `PROGRAM_ID` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `SCHEDULE_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `SCHEDULE_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `sections`
@@ -327,13 +308,13 @@ ALTER TABLE `strands`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `STUDENT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `STUDENT_ID` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `SUBJECT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `SUBJECT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `term`
@@ -345,7 +326,7 @@ ALTER TABLE `term`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `USER_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `USER_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
