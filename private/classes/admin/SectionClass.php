@@ -25,7 +25,6 @@ class SectionClass extends Database
             $data = [
                 'SECTION' => Input::Validate('section'),
                 'YEAR_LEVEL' => Input::Validate('year_level'),
-                'PROGRAM' => Input::Validate('program'),
             ];
 
 
@@ -54,7 +53,6 @@ class SectionClass extends Database
             $data = [
                 'SECTION' => Input::Validate('section'),
                 'YEAR_LEVEL' => Input::Validate('year_level'),
-                'PROGRAM' => Input::Validate('program'),
             ];
 
 
