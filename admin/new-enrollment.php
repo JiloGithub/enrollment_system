@@ -87,7 +87,10 @@ $new_enrollment->confirm_student();
                                                         <td class="justify-content-center d-flex">
                                                             <form action="" method="post">
                                                                 <input type="hidden" name="student_id" value="<?= $row->STUDENT_ID ?>">
-                                                                <button class="btn btn-sm btn-blue" name="confirm-student"><i class="fas fa-check"></i> Confirm</button>
+                                                                <input type="hidden" name="student_email" value="<?= $row->ST_EMAIL ?>">
+                                                                <input type="hidden" name="student_firstname" value="<?= $row->ST_FNAME ?>">
+                                                                <input type="hidden" name="student_lastname" value="<?= $row->ST_LNAME ?>">
+                                                                <button class="btn btn-sm btn-green" onclick="return window.confirm('Are you want to approve?')" name="confirm-student"><i class="fas fa-check"></i> Approve</button>
                                                             </form>
                                                         </td>
                                                     </tr>

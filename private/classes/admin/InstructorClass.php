@@ -31,9 +31,9 @@ class InstructorClass extends Database
             $query = $this->save('instructors', $data);
 
             if ($query) {
-                Redirect::to('admin/instructor', 'Add Successfully!', 'success');
+                Redirect::to('admin/instructor.php', 'Add Successfully!', 'success');
             } else {
-                Redirect::to('admin/instructor', 'Add Failed!', 'danger');
+                Redirect::to('admin/instructor.php', 'Add Failed!', 'danger');
             }
         });
     }
@@ -60,9 +60,9 @@ class InstructorClass extends Database
             $query = $this->update('instructors', $data, $this->where('INSTRUCTOR_ID', Input::Validate('instructor_id')));
 
             if ($query) {
-                Redirect::to('admin/instructor', 'Update Successfully!', 'success');
+                Redirect::to('admin/instructor.php', 'Update Successfully!', 'success');
             } else {
-                Redirect::to('admin/instructor', 'Update Failed!', 'danger');
+                Redirect::to('admin/instructor.php', 'Update Failed!', 'danger');
             }
         });
     }
@@ -73,9 +73,9 @@ class InstructorClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('instructors', $this->where('INSTRUCTOR_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/instructor', 'Delete Successfully!', 'success');
+                Redirect::to('admin/instructor.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/instructor', 'Delete Failed!', 'danger');
+                Redirect::to('admin/instructor.php', 'Delete Failed!', 'danger');
             }
         }
     }

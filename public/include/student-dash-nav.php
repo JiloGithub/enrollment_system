@@ -6,14 +6,15 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end mx-3" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href=""><i class="fas fa-file"></i> <span>Report of Grades</span></a>
-                <a class="nav-link" href=""><i class="fas fa-edit"></i> <span>Update Info</span></a>
+                <a class="nav-link" href="cor.php"><i class="fas fa-copy"></i> <span>COR</span></a>
+                <a class="nav-link" href="report_of_grades.php"><i class="fas fa-file"></i> <span>Report of Grades</span></a>
+                <a class="nav-link" href="update-info.php"><i class="fas fa-edit"></i> <span>Update Info</span></a>
 
             </div>
         </div>
         <div class="btn-group">
             <button type="button" style="background-color: transparent;cursor: pointer;border: 0;box-shadow: none;" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa fa-user-circle"></i> <?= Session::get('student_username'); ?>
+                <i class="fas fa fa-user-circle"></i> <?= Session::get('student_firstname'); ?>
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" onclick="return window.confirm('Are you want to logout?')" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

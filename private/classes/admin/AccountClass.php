@@ -32,9 +32,9 @@ class AccountClass extends Database
 
                 if ($query) {
                     Session::put('username', $data['USERNAME']);
-                    Redirect::to('admin/manage-account', 'Update Successfully!', 'success');
+                    Redirect::to('admin/manage-account.php', 'Update Successfully!', 'success');
                 } else {
-                    Redirect::to('admin/manage-account', 'Update Failed!', 'danger');
+                    Redirect::to('admin/manage-account.php', 'Update Failed!', 'danger');
                 }
             } else {
                 $data = [
@@ -49,12 +49,12 @@ class AccountClass extends Database
 
                         Session::put('username', $data['USERNAME']);
                         Session::put('password', $data['PASSWORD']);
-                        Redirect::to('admin/manage-account', 'Update Successfully!', 'success');
+                        Redirect::to('admin/manage-account.php', 'Update Successfully!', 'success');
                     } else {
-                        Redirect::to('admin/manage-account', 'Update Failed!', 'danger');
+                        Redirect::to('admin/manage-account.php', 'Update Failed!', 'danger');
                     }
                 } else {
-                    Redirect::to('admin/manage-account', 'Password not match!', 'danger');
+                    Redirect::to('admin/manage-account.php', 'Password not match!', 'danger');
                 }
             }
         });

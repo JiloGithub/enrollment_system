@@ -32,9 +32,9 @@ class SectionClass extends Database
             $query = $this->save('sections', $data);
 
             if ($query) {
-                Redirect::to('admin/section', 'Add Successfully!', 'success');
+                Redirect::to('admin/section.php', 'Add Successfully!', 'success');
             } else {
-                Redirect::to('admin/section', 'Add Failed!', 'danger');
+                Redirect::to('admin/section.php', 'Add Failed!', 'danger');
             }
         });
     }
@@ -61,9 +61,9 @@ class SectionClass extends Database
             $query = $this->update('sections', $data, $this->where('SECTION_ID', Input::Validate('section_id')));
 
             if ($query) {
-                Redirect::to('admin/section', 'Update Successfully!', 'success');
+                Redirect::to('admin/section.php', 'Update Successfully!', 'success');
             } else {
-                Redirect::to('admin/section', 'Update Failed!', 'danger');
+                Redirect::to('admin/section.php', 'Update Failed!', 'danger');
             }
         });
     }
@@ -74,9 +74,9 @@ class SectionClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('sections', $this->where('SECTION_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/section', 'Delete Successfully!', 'success');
+                Redirect::to('admin/section.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/section', 'Delete Failed!', 'danger');
+                Redirect::to('admin/section.php', 'Delete Failed!', 'danger');
             }
         }
     }

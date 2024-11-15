@@ -12,6 +12,7 @@ $data = $section->fetch_section();
 $section->update_section();
 $section->delete_section();
 $program = $section->fetch_program();
+$new_students = $section->new_student();
 
 ?>
 <!DOCTYPE html>
@@ -59,17 +60,7 @@ $program = $section->fetch_program();
                                 <option value="Grade 12">Grade 12</option>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label>Program:</label>
-                            <select required class="form-control form-select" name="program">
-                                <option selected hidden disabled>-- Program --</option>
-                                <?php foreach ($program as $row): ?>
 
-                                    <option value="<?= $row->PROGRAM ?>"><?= $row->PROGRAM ?></option>
-
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -106,17 +97,7 @@ $program = $section->fetch_program();
                                 <option value="Grade 12">Grade 12</option>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label>Program:</label>
-                            <select required class="form-control form-select" name="program" id="program">
-                                <option selected hidden disabled>-- Program --</option>
-                                <?php foreach ($program as $row): ?>
 
-                                    <option value="<?= $row->PROGRAM ?>"><?= $row->PROGRAM ?></option>
-
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -168,7 +149,6 @@ $program = $section->fetch_program();
                                             <tr>
                                                 <th>SECTION</th>
                                                 <th>YEAR LEVEL</th>
-                                                <th>PROGRAM</th>
                                                 <th>ACTION</th>
                                             </tr>
                                         </thead>
@@ -178,7 +158,6 @@ $program = $section->fetch_program();
                                                     <tr>
                                                         <td><?= $row->SECTION ?></td>
                                                         <td><?= $row->YEAR_LEVEL ?></td>
-                                                        <td><?= $row->PROGRAM ?></td>
                                                         <td class="justify-content-center d-flex">
 
                                                             <button id="edit-btn" value="<?= $row->SECTION_ID ?>" class="btn btn-sm btn-blue mx-2"><i class="fas fa-edit"></i>Edit</button>
@@ -222,7 +201,6 @@ $program = $section->fetch_program();
                 $('#section_id').val($id);
                 $('#section').val(data[0]);
                 $('#year_level').val(data[1]);
-                $('#program').val(data[2]);
 
             });
         });

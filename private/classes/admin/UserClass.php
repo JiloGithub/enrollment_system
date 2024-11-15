@@ -33,9 +33,9 @@ class UserClass extends Database
             $query = $this->save('users', $data);
 
             if ($query) {
-                Redirect::to('admin/users', 'Add Successfully!', 'success');
+                Redirect::to('admin/users.php', 'Add Successfully!', 'success');
             } else {
-                Redirect::to('admin/users', 'Add Failed!', 'danger');
+                Redirect::to('admin/users.php', 'Add Failed!', 'danger');
             }
         });
     }
@@ -60,12 +60,12 @@ class UserClass extends Database
                 $query = $this->update('users', $data, $this->where('USER_ID', Input::Validate('user_id')));
 
                 if ($query) {
-                    Redirect::to('admin/users', 'Update Successfully!', 'success');
+                    Redirect::to('admin/users.php', 'Update Successfully!', 'success');
                 } else {
-                    Redirect::to('admin/users', 'Update Failed!', 'danger');
+                    Redirect::to('admin/users.php', 'Update Failed!', 'danger');
                 }
             } else {
-                Redirect::to('admin/users', 'Password not match!', 'danger');
+                Redirect::to('admin/users.php', 'Password not match!', 'danger');
             }
         });
     }
@@ -76,9 +76,9 @@ class UserClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('users', $this->where('USER_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/users', 'Delete Successfully!', 'success');
+                Redirect::to('admin/users.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/users', 'Delete Failed!', 'danger');
+                Redirect::to('admin/users.php', 'Delete Failed!', 'danger');
             }
         }
     }

@@ -3,7 +3,7 @@ include 'private/config/autoload.php';
 spl_autoload_register(function ($class) {
     include_once CLASSES . $class . '.php';
 });
-$home = new HomeClass();
+$home = new LoginClass();
 $schedule = $home->fetch_schedule();
 $home = $home->login();
 ?>
@@ -39,15 +39,15 @@ $home = $home->login();
                     <div class="card-body">
                         <form action="" method="post">
                             <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="lni lni-envelope-1"></i></span>
-                                <input required type="email" class="form-control" name="email" placeholder="Enter email address">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input required type="email" class="form-control" name="email" placeholder="Enter Email">
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="lni lni-locked-2"></i></span>
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input required type="password" class="form-control" name="password" placeholder="Enter Password">
                             </div>
                             <div class="mb-3">
-                                <a class="text-decoration-none" style="color: #4e73df;" href="">Forgot password?</a>
+                                <a href="forgot-password.php" class="text-decoration-none" style="color: #4e73df;">Forgot password?</a>
                             </div>
 
                             <div class="mb-3">

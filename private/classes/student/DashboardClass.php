@@ -15,9 +15,25 @@ class DashboardClass extends Database
         }
         return isset($data) ? $data : false;
     }
-    public function subjects()
+    public function jhs_subjects()
     {
         $query = $this->find('subjects', $this->where('YEAR_LEVEL', Session::get('student_year_level')));
+        while ($row = $query->fetch(PDO::FETCH_OBJ)) {
+            $data[] = $row;
+        }
+        return isset($data) ? $data : false;
+    }
+    public function shs_subjects_first_semester()
+    {
+        $query = $this->find('shs_subjects', $this->where('SEMESTER', 'First'), $this->where('YEAR_LEVEL', Session::get('student_year_level')));
+        while ($row = $query->fetch(PDO::FETCH_OBJ)) {
+            $data[] = $row;
+        }
+        return isset($data) ? $data : false;
+    }
+    public function shs_subjects_second_semester()
+    {
+        $query = $this->find('shs_subjects', $this->where('SEMESTER', 'Second'), $this->where('YEAR_LEVEL', Session::get('student_year_level')));
         while ($row = $query->fetch(PDO::FETCH_OBJ)) {
             $data[] = $row;
         }

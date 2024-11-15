@@ -8,8 +8,8 @@ spl_autoload_register(function ($class) {
 $student_list = new StudentListClass;
 $student_list->index();
 $new_students = $student_list->new_student();
-$data = $student_list->fetch_students();
-// $student_list->confirm_student();
+$data = $student_list->fetch_all_students();
+$student_list->dropped_student();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +85,11 @@ $data = $student_list->fetch_students();
                                                         <td><?= $row->ST_YEAR_LEVEL ?></td>
                                                         <td><?= $row->ST_STATUS ?></td>
                                                         <td class="justify-content-center d-flex">
-                                                            <a class="btn btn-sm btn-green" name="dropped-student"><i class="fas fa-eye"></i>View</a>
+                                                            <form action="" method="post">
+                                                                <input type="hidden" name="student_id" value="<?= $row->STUDENT_ID ?>">
+                                                                <button class="btn btn-sm btn-red mx-2" onclick="return window.confirm('Are you want to dropped?')" name="dropped-student"><i class="fas fa-user-times"></i>Dropped</button>
+                                                            </form>
+                                                            <a class="btn btn-sm btn-green" href="view-student.php?student_id=<?= $row->STUDENT_ID ?>"><i class="fas fa-eye"></i>View</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

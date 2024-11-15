@@ -6,7 +6,7 @@ class Redirect
     {
         $_SESSION['message'] = $message;
         $_SESSION['message_type'] = $message_type;
-        header('location:' . ROOT . $destination . '.php');
+        header('location:' . ROOT . $destination);
         exit;
     }
 }

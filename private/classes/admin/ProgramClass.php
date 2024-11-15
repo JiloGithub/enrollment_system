@@ -31,9 +31,9 @@ class ProgramClass extends Database
             $query = $this->save('programs', $data);
 
             if ($query) {
-                Redirect::to('admin/program', 'Add Successfully!', 'success');
+                Redirect::to('admin/program.php', 'Add Successfully!', 'success');
             } else {
-                Redirect::to('admin/program', 'Add Failed!', 'danger');
+                Redirect::to('admin/program.php', 'Add Failed!', 'danger');
             }
         });
     }
@@ -59,9 +59,9 @@ class ProgramClass extends Database
             $query = $this->update('programs', $data, $this->where('PROGRAM_ID', Input::Validate('program_id')));
 
             if ($query) {
-                Redirect::to('admin/program', 'Update Successfully!', 'success');
+                Redirect::to('admin/program.php', 'Update Successfully!', 'success');
             } else {
-                Redirect::to('admin/program', 'Update Failed!', 'danger');
+                Redirect::to('admin/program.php', 'Update Failed!', 'danger');
             }
         });
     }
@@ -72,9 +72,9 @@ class ProgramClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('programs', $this->where('PROGRAM_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/program', 'Delete Successfully!', 'success');
+                Redirect::to('admin/program.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/program', 'Delete Failed!', 'danger');
+                Redirect::to('admin/program.php', 'Delete Failed!', 'danger');
             }
         }
     }

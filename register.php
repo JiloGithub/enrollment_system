@@ -4,7 +4,7 @@ include 'private/config/autoload.php';
 spl_autoload_register(function ($class) {
     include_once CLASSES . $class . '.php';
 });
-$form = new FormClass();
+$form = new RegisterClass();
 $term = $form->fetch_term();
 $form->create_student();
 
@@ -34,24 +34,34 @@ $form->create_student();
         <div class="row mt-5 mb-5">
             <div class="col">
                 <div class="card p-3 bg-light">
-                    <div class="card-header">
-                        Junior High School
+                    <div class="card-header justify-content-between d-flex">
+                        <div class="left">
+                            Enrollment Form
+                        </div>
+                        <div class="rigth">
+                            Current Year : <?php echo  date('Y') ?>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col">
-
+                                    <div class="mb-5 row">
+                                        <label class="col-sm-2 col-form-label">LRN :</label>
+                                        <div class="col-sm-4 align-items-center d-flex">
+                                            <input required type="text" class="form-control" name="lrn" placeholder="Enter LRN">
+                                        </div>
+                                    </div>
                                     <div class="mb-3 mt-3 row">
                                         <label class="col-sm-2 col-form-label">Fullname :</label>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <input required type="text" class="form-control" name="firstname" placeholder="Enter Firstname">
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <input required type="text" class="form-control" name="lastname" placeholder="Enter Lastname">
                                         </div>
-                                        <div class="col-sm-1">
-                                            <input required type="text" class="form-control" name="middlename" placeholder="M.I.">
+                                        <div class="col-sm-3">
+                                            <input required type="text" class="form-control" name="middlename" placeholder="Enter Middlename">
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="text" class="form-control" name="name_extension" placeholder="Jr/Sr">
@@ -59,8 +69,17 @@ $form->create_student();
                                     </div>
                                     <div class="mb-4 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Profile :</label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-4">
                                             <input required type="file" class="form-control" name="profile">
+                                        </div>
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Civil Status :</label>
+                                        <div class="col-sm-4">
+                                            <select required class="form-control form-select" name="civil_status">
+                                                <option value="" selected disabled hidden>-- Select --</option>
+                                                <option value="Single">Single</option>
+                                                <option value="Married">Married</option>
+                                                <option value="Widowed">Widowed</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -86,7 +105,7 @@ $form->create_student();
                                         </div>
                                     </div>
 
-                                    <div class="mb-3 row">
+                                    <!-- <div class="mb-3 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Age :</label>
                                         <div class="col-sm-4 align-items-center d-flex">
                                             <input required type="number" class="form-control" name="age" placeholder="Enter your age">
@@ -95,13 +114,13 @@ $form->create_student();
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Civil Status :</label>
                                         <div class="col-sm-4">
                                             <select required class="form-control form-select" name="civil_status">
-                                                <option selected disabled hidden>-- Select --</option>
+                                                <option value="" selected disabled hidden>-- Select --</option>
                                                 <option value="Single">Single</option>
                                                 <option value="Married">Married</option>
                                                 <option value="Widowed">Widowed</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="mb-4 row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Place of Birth :</label>
@@ -154,7 +173,7 @@ $form->create_student();
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Year Level :</label>
                                         <div class="col-sm-4 align-items-center d-flex">
                                             <select required id="year_level" class="form-control form-select" name="year_level">
-                                                <option selected disabled hidden>-- Select --</option>
+                                                <option value="" selected disabled hidden>-- Select --</option>
                                                 <option value="Grade 7">Grade 7</option>
                                                 <option value="Grade 8">Grade 8</option>
                                                 <option value="Grade 9">Grade 9</option>
@@ -164,22 +183,23 @@ $form->create_student();
                                             </select>
                                         </div>
 
-                                        <label for="inputPassword" class="col-sm-2 col-form-label">School Year :</label>
+
+                                        <!-- <label for="inputPassword" class="col-sm-2 col-form-label">School Year :</label>
                                         <div class="col-sm-4 align-items-center d-flex">
                                             <select required class="form-control form-select" name="school_year">
-                                                <option selected disabled hidden>-- Select --</option>
+                                                <option value="" selected disabled hidden>-- Select --</option>
                                                 <?php foreach ($term as $row) : ?>
                                                     <?php if ($row->STATUS == 'Active') : ?>
                                                         <option><?= $row->TERM; ?></option>
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
                                             </select>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="mb-5 row strand">
 
                                     </div>
-                                    <div class="mb-5 row">
+                                    <!-- <div class="mb-5 row">
                                         <label class="col-sm-2 col-form-label">Username :</label>
                                         <div class="col-sm-4 align-items-center d-flex">
                                             <input required type="text" class="form-control" name="username" placeholder="Enter username">
@@ -189,12 +209,12 @@ $form->create_student();
                                         <div class="col-sm-4 align-items-center d-flex">
                                             <input required type="password" class="form-control" name="password" placeholder="Enter password">
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="enrol_now" style="color:#fff;background-color: #4e73df;" class="btn">Enroll Now</button>
+                                <button type="submit" name="register" style="color:#fff;background-color: #4e73df;" class="btn">Enroll Now</button>
                             </div>
                         </form>
                     </div>

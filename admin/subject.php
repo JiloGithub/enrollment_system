@@ -46,10 +46,7 @@ $new_students = $subject->new_student();
                             <label>Subject:</label>
                             <input required class="form-control" type="text" name="subject">
                         </div>
-                        <div class="mb-3">
-                            <label>Unit:</label>
-                            <input required class="form-control" type="number" name="unit">
-                        </div>
+
                         <div class="mb-3">
                             <label>Year Level:</label>
                             <select required class="form-control form-select" name="year_level">
@@ -86,12 +83,7 @@ $new_students = $subject->new_student();
                             <input required class="form-control" type="hidden" name="subject_id" id="subject_id">
                             <input required class="form-control" type="text" name="subject" id="subject">
                         </div>
-                        <div class="mb-3">
-                            <div class="mb-3">
-                                <label>Unit:</label>
-                                <input required class="form-control" type="number" name="unit" id="unit">
-                            </div>
-                        </div>
+
                         <div class="mb-3">
                             <label>Year Level:</label>
                             <select required class="form-control form-select" name="year_level" id="year_level">
@@ -136,12 +128,12 @@ $new_students = $subject->new_student();
                                     <?php include ADMIN_ALERT; ?>
 
                                     <div class="mb-5 justify-content-between d-flex">
-                                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                                            <ol class="breadcrumb">
-                                                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-                                                <li class="breadcrumb-item active" aria-current="page">Subject</li>
-                                            </ol>
-                                        </nav>
+                                        <div>
+                                            <select class="form-select" name="dynamic_select" id="dynamic_select">
+                                                <option selected hidden>Junior High School</option>
+                                                <option value="shs-subject.php">Senior High School</option>
+                                            </select>
+                                        </div>
 
                                         <div>
                                             <button class="btn btn-sm btn-blue" data-bs-toggle="modal" data-bs-target="#add-subject-modal"><i class="fas fa-plus"></i>Add Subject</button>
@@ -153,7 +145,6 @@ $new_students = $subject->new_student();
                                             <tr>
                                                 <th>ID</th>
                                                 <th>SUBJECT NAME</th>
-                                                <th>UNIT</th>
                                                 <th>YEAR LEVEL</th>
 
 
@@ -169,7 +160,6 @@ $new_students = $subject->new_student();
                                                     <tr>
                                                         <td><?= $no++ ?></td>
                                                         <td><?= $row->SUBJECT ?></td>
-                                                        <td><?= $row->UNIT ?></td>
                                                         <td><?= $row->YEAR_LEVEL ?></td>
                                                         <td class="justify-content-center d-flex">
 
@@ -203,6 +193,14 @@ $new_students = $subject->new_student();
     <script>
         $(document).ready(function() {
 
+            $('#dynamic_select').on('change', function() {
+                var url = $(this).val(); // get selected value
+                if (url) { // require a URL
+                    window.location = url; // redirect
+                }
+                return false;
+            });
+
             $('#table tbody').on('click', '#edit-btn', function() {
                 $('#update-subject-modal').modal('show');
                 $id = $(this).val();
@@ -213,8 +211,7 @@ $new_students = $subject->new_student();
                 console.log(data);
                 $('#subject_id').val($id);
                 $('#subject').val(data[1]);
-                $('#unit').val(data[2]);
-                $('#year_level').val(data[3]);
+                $('#year_level').val(data[2]);
 
             });
         });

@@ -8,7 +8,7 @@ spl_autoload_register(function ($class) {
 $student_list = new StudentListClass;
 $student_list->index();
 $new_students = $student_list->new_student();
-$data = $student_list->fetch_students();
+$data = $student_list->fetch_all_students();
 // $student_list->confirm_student();
 ?>
 <!DOCTYPE html>
@@ -85,7 +85,12 @@ $data = $student_list->fetch_students();
                                                         <td><?= $row->ST_YEAR_LEVEL ?></td>
                                                         <td><?= $row->ST_STATUS ?></td>
                                                         <td class="justify-content-center d-flex">
-                                                            <a class="btn btn-sm btn-blue" name="dropped-student"><i class="fas fa-eye"></i>View Record</a>
+                                                            <?php if ($row->ST_YEAR_LEVEL == 'Grade 11' || $row->ST_YEAR_LEVEL == 'Grade 12'): ?>
+                                                                <a class="btn btn-sm btn-blue" href="view-record.php?student_id=<?= $row->STUDENT_ID ?>&year_level=<?= $row->ST_YEAR_LEVEL ?>&semester=<?= $row->ST_SEMESTER ?>&strand=<?= $row->ST_TRACK_STRAND ?>"><i class="fas fa-eye"></i>View Record</a>
+                                                            <?php else: ?>
+
+                                                                <a class="btn btn-sm btn-blue" href="view-record.php?student_id=<?= $row->STUDENT_ID ?>&year_level=<?= $row->ST_YEAR_LEVEL ?>"><i class="fas fa-eye"></i>View Record</a>
+                                                            <?php endif; ?>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

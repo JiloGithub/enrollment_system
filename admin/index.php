@@ -49,9 +49,9 @@ $login->index();
                         <span class="input-group-text"><i class="lni lni-locked-2"></i></span>
                         <input type="password" class="form-control" name="password" placeholder="Enter Password">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <a class="text-decoration-none" style="color: #4e73df;" href="">Forgot password?</a>
-                    </div>
+                    </div> -->
 
                     <div class="mb-3">
                         <button class="btn btn-blue" name="login">Login</button>

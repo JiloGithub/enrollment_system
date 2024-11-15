@@ -1,6 +1,6 @@
 <?php
 
-class FormClass extends Database
+class RegisterClass extends Database
 {
 
 
@@ -14,7 +14,7 @@ class FormClass extends Database
     }
     public function create_student()
     {
-        Request::method('enrol_now', function () {
+        Request::method('register', function () {
 
 
             $file = new File;
@@ -23,6 +23,7 @@ class FormClass extends Database
             if ($file->validate()) {
 
                 $data = [
+                    'ST_LRN' => Input::validate('lrn'),
                     'ST_FNAME' => Input::validate('firstname'),
                     'ST_LNAME' => Input::validate('lastname'),
                     'ST_MI' => Input::validate('middlename'),
@@ -31,7 +32,6 @@ class FormClass extends Database
                     'ST_ADDRESS' => Input::validate('address'),
                     'ST_GENDER' => Input::validate('gender'),
                     'ST_BIRTHDATE' => Input::validate('birthdate'),
-                    'ST_AGE' => Input::validate('age'),
                     'ST_CIVIL_STATUS' => Input::validate('civil_status'),
                     'ST_PLACEBIRTH' => Input::validate('place_of_birth'),
                     'ST_NATIONALITY' => Input::validate('nationality'),
@@ -41,26 +41,26 @@ class FormClass extends Database
                     'ST_GDNAME' => Input::validate('guardian'),
                     'ST_GD_CONTACT_NO' => Input::validate('guardian_contact_number'),
                     'ST_YEAR_LEVEL' => Input::validate('year_level'),
-                    'ST_SCHOOL_YEAR' => Input::validate('school_year'),
+                    'ST_CURRENT_YEAR' => date('Y'),
+                    'ST_SCHOOL_YEAR' => date('Y') . '-' . date('Y') + 1,
                     'ST_TRACK_STRAND' => Input::validate('strand'),
-                    'ST_USERNAME' => Input::validate('username'),
-                    'ST_PASSWORD' => Hash::make(Input::validate('password')),
+                    'ST_SEMESTER' => Input::validate('semester'),
                 ];
                 $query = $this->find('students', $this->where('ST_FNAME', $data['ST_FNAME']), $this->where('ST_LNAME', $data['ST_LNAME']), $this->where('ST_MI', $data['ST_MI']), $this->where('ST_EXT_NAME', $data['ST_EXT_NAME']));
                 if ($query->rowCount() > 0) {
-                    Redirect::to('enrollment-form', 'This Student is already exist!', 'warning');
+                    Redirect::to('register.php', 'This Student is already exist!', 'warning');
                 } else {
                     $query = $this->find('students', $this->where('ST_EMAIL', $data['ST_EMAIL']));
                     if ($query->rowCount() > 0) {
-                        Redirect::to('enrollment-form', 'Email is already exist!', 'warning');
+                        Redirect::to('register.php', 'Email is already exist!', 'warning');
                     } else {
 
                         $query = $this->save('students', $data);
                         if ($query) {
                             $file->upload();
-                            Redirect::to('index', 'Fill up successfully!', 'success');
+                            Redirect::to('index.php', 'Fill up successfully wait for the admin verification!', 'success');
                         } else {
-                            Redirect::to('enrollment-form', 'Fill up failed!', 'danger');
+                            Redirect::to('register.php', 'Fill up failed!', 'danger');
                         }
                     }
                 }

@@ -31,16 +31,16 @@ class ScheduleClass extends Database
                 'SC_YEAR_LEVEL' => Input::Validate('year_level'),
             ];
 
-            $query = $this->find('schedules', $this->where('SC_INSTRUCTOR', $data['SC_INSTRUCTOR']));
+            $query = $this->find('schedules', $this->where('SC_INSTRUCTOR', $data['SC_INSTRUCTOR']), $this->where('SC_FROM', $data['SC_FROM']), $this->where('SC_TO', $data['SC_TO']), $this->where('SC_ROOM', $data['SC_ROOM']));
             if ($query->rowCount() > 0) {
-                Redirect::to('admin/schedule', 'Instructor is already have!', 'warning');
+                Redirect::to('admin/schedule.php', 'Instructor is already have!', 'warning');
             } else {
                 $query = $this->save('schedules', $data);
 
                 if ($query) {
-                    Redirect::to('admin/schedule', 'Add Successfully!', 'success');
+                    Redirect::to('admin/schedule.php', 'Add Successfully!', 'success');
                 } else {
-                    Redirect::to('admin/schedule', 'Add Failed!', 'danger');
+                    Redirect::to('admin/schedule.php', 'Add Failed!', 'danger');
                 }
             }
         });
@@ -77,14 +77,14 @@ class ScheduleClass extends Database
 
             $query = $this->find('schedules', $this->where('SC_INSTRUCTOR', $data['SC_INSTRUCTOR']));
             if ($query->rowCount() > 0) {
-                Redirect::to('admin/schedule', 'Instructor is already have!', 'warning');
+                Redirect::to('admin/schedule.php', 'Instructor is already have!', 'warning');
             } else {
                 $query = $this->update('schedules', $data, $this->where('SCHEDULE_ID', Input::Validate('schedule_id')));
 
                 if ($query) {
-                    Redirect::to('admin/schedule', 'Update Successfully!', 'success');
+                    Redirect::to('admin/schedule.php', 'Update Successfully!', 'success');
                 } else {
-                    Redirect::to('admin/schedule', 'Update Failed!', 'danger');
+                    Redirect::to('admin/schedule.php', 'Update Failed!', 'danger');
                 }
             }
         });
@@ -96,9 +96,9 @@ class ScheduleClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('schedules', $this->where('SCHEDULE_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/schedule', 'Delete Successfully!', 'success');
+                Redirect::to('admin/schedule.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/schedule', 'Delete Failed!', 'danger');
+                Redirect::to('admin/schedule.php', 'Delete Failed!', 'danger');
             }
         }
     }

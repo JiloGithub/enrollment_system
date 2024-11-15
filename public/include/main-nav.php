@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse justify-content-end mx-3" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="index.php"><i class="fas fa-home"></i><span>Home</span></a>
-                <a class="nav-link" href="enrollment-form.php"><i class='fas fa-file-signature'></i><span>Enroll Now</span></a>
+                <a class="nav-link" href="register.php"><i class='fas fa-file-signature'></i><span>Register</span></a>
                 <a class="nav-link" href="about.php"><i class="fas fa-info-circle"></i><span>About us</span></a>
                 <a class="nav-link" href="#"><i class="fas fa-phone"></i><span>Contact us</span></a>
             </div>

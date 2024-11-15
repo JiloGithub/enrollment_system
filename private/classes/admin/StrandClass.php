@@ -31,9 +31,9 @@ class StrandClass extends Database
             $query = $this->save('strands', $data);
 
             if ($query) {
-                Redirect::to('admin/strand', 'Add Successfully!', 'success');
+                Redirect::to('admin/strand.php', 'Add Successfully!', 'success');
             } else {
-                Redirect::to('admin/strand', 'Add Failed!', 'danger');
+                Redirect::to('admin/strand.php', 'Add Failed!', 'danger');
             }
         });
     }
@@ -59,9 +59,9 @@ class StrandClass extends Database
             $query = $this->update('strands', $data, $this->where('STRAND_ID', Input::Validate('strand_id')));
 
             if ($query) {
-                Redirect::to('admin/strand', 'Update Successfully!', 'success');
+                Redirect::to('admin/strand.php', 'Update Successfully!', 'success');
             } else {
-                Redirect::to('admin/strand', 'Update Failed!', 'danger');
+                Redirect::to('admin/strand.php', 'Update Failed!', 'danger');
             }
         });
     }
@@ -72,9 +72,9 @@ class StrandClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('strands', $this->where('STRAND_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/strand', 'Delete Successfully!', 'success');
+                Redirect::to('admin/strand.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/strand', 'Delete Failed!', 'danger');
+                Redirect::to('admin/strand.php', 'Delete Failed!', 'danger');
             }
         }
     }

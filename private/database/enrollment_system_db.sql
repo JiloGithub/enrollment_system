@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2024 at 01:14 PM
+-- Generation Time: Nov 15, 2024 at 07:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -22,6 +22,25 @@ SET time_zone = "+00:00";
 CREATE DATABASE `enrollment_system_db`;
 USE `enrollment_system_db`;
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `GRADE_ID` int(20) NOT NULL,
+  `STUDENT_ID` int(20) NOT NULL,
+  `SUBJECT_NAME` varchar(255) NOT NULL,
+  `FIRST_GRADING` varchar(255) NOT NULL,
+  `SECOND_GRADING` varchar(255) NOT NULL,
+  `THIRD_GRADING` varchar(255) NOT NULL,
+  `FOURTH_GRADING` varchar(255) NOT NULL,
+  `FINAL` varchar(255) NOT NULL,
+  `REMARKS` varchar(255) NOT NULL,
+  `YEAR_LEVEL` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -87,9 +106,58 @@ INSERT INTO `schedules` (`SCHEDULE_ID`, `SC_INSTRUCTOR`, `SC_DAY`, `SC_FROM`, `S
 CREATE TABLE `sections` (
   `SECTION_ID` int(20) NOT NULL,
   `SECTION` varchar(255) NOT NULL,
-  `YEAR_LEVEL` varchar(255) NOT NULL,
-  `PROGRAM` varchar(255) NOT NULL
+  `YEAR_LEVEL` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`SECTION_ID`, `SECTION`, `YEAR_LEVEL`) VALUES
+(1, 'Reiman', 'Grade 7');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shs_grades`
+--
+
+CREATE TABLE `shs_grades` (
+  `GRADE_ID` int(20) NOT NULL,
+  `STUDENT_ID` int(20) NOT NULL,
+  `SUBJECT` varchar(255) NOT NULL,
+  `FIRST_GRADING` varchar(255) NOT NULL,
+  `SECOND_GRADING` varchar(255) NOT NULL,
+  `FINAL` varchar(255) NOT NULL,
+  `REMARKS` varchar(255) NOT NULL,
+  `YEAR_LEVEL` varchar(255) NOT NULL,
+  `SEMESTER` varchar(255) NOT NULL,
+  `STRAND` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shs_subjects`
+--
+
+CREATE TABLE `shs_subjects` (
+  `SUBJECT_ID` int(20) NOT NULL,
+  `SUBJECT` varchar(255) NOT NULL,
+  `YEAR_LEVEL` varchar(255) NOT NULL,
+  `SEMESTER` varchar(255) NOT NULL,
+  `STRAND` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shs_subjects`
+--
+
+INSERT INTO `shs_subjects` (`SUBJECT_ID`, `SUBJECT`, `YEAR_LEVEL`, `SEMESTER`, `STRAND`) VALUES
+(2, 'Oral Communication I', 'Grade 11', 'First', 'ICT'),
+(3, 'Oral Communication II', 'Grade 11', 'Second', 'ICT'),
+(4, 'programming I', 'Grade 12', 'First', 'ICT'),
+(5, 'programming II', 'Grade 12', 'Second', 'ICT');
 
 -- --------------------------------------------------------
 
@@ -109,11 +177,11 @@ CREATE TABLE `strands` (
 --
 
 INSERT INTO `strands` (`STRAND_ID`, `STRAND`, `DESCRIPTION`, `DATE`) VALUES
-(2, 'Information Communication Technology', 'ICT', '2024-11-03 23:58:28'),
-(3, 'Humanities and Social Sciences', 'HUMSS', '2024-11-07 01:00:24'),
-(4, 'General Academic Strand', 'GAS', '2024-11-07 01:01:17'),
-(5, 'Science, Technology, Engineering, and Mathematics', 'STEM', '2024-11-07 01:02:08'),
-(6, 'Accountancy, Business and Management', 'ABM', '2024-11-07 01:02:30');
+(2, 'ICT', 'Information Communication Technology', '2024-11-14 14:28:56'),
+(3, 'HUMSS', 'Humanities and Social Sciences', '2024-11-14 14:29:11'),
+(4, 'GAS', 'General Academic Strand', '2024-11-14 14:29:20'),
+(5, 'STEM', 'Science, Technology, Engineering, and Mathematics', '2024-11-14 14:29:33'),
+(6, 'ABM', 'Accountancy, Business and Management', '2024-11-14 14:29:43');
 
 -- --------------------------------------------------------
 
@@ -123,6 +191,7 @@ INSERT INTO `strands` (`STRAND_ID`, `STRAND`, `DESCRIPTION`, `DATE`) VALUES
 
 CREATE TABLE `students` (
   `STUDENT_ID` int(20) NOT NULL,
+  `ST_LRN` varchar(255) NOT NULL,
   `ST_FNAME` varchar(255) NOT NULL,
   `ST_LNAME` varchar(255) NOT NULL,
   `ST_MI` varchar(255) NOT NULL,
@@ -131,7 +200,6 @@ CREATE TABLE `students` (
   `ST_ADDRESS` varchar(255) NOT NULL,
   `ST_GENDER` varchar(255) NOT NULL,
   `ST_BIRTHDATE` varchar(255) NOT NULL,
-  `ST_AGE` varchar(255) NOT NULL,
   `ST_CIVIL_STATUS` varchar(255) NOT NULL,
   `ST_PLACEBIRTH` varchar(255) NOT NULL,
   `ST_NATIONALITY` varchar(255) NOT NULL,
@@ -141,11 +209,14 @@ CREATE TABLE `students` (
   `ST_GDNAME` varchar(255) NOT NULL,
   `ST_GD_CONTACT_NO` varchar(255) NOT NULL,
   `ST_YEAR_LEVEL` varchar(255) NOT NULL,
+  `ST_CURRENT_YEAR` varchar(255) NOT NULL,
   `ST_SCHOOL_YEAR` varchar(255) NOT NULL,
   `ST_TRACK_STRAND` varchar(255) NOT NULL,
+  `ST_SEMESTER` varchar(255) NOT NULL,
   `ST_USERNAME` varchar(255) NOT NULL,
   `ST_PASSWORD` varchar(255) NOT NULL,
-  `ST_STATUS` varchar(255) NOT NULL DEFAULT 'New'
+  `ST_STATUS` varchar(255) NOT NULL DEFAULT 'New',
+  `ST_PASSCODE` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -157,17 +228,18 @@ CREATE TABLE `students` (
 CREATE TABLE `subjects` (
   `SUBJECT_ID` int(20) NOT NULL,
   `SUBJECT` varchar(255) NOT NULL,
-  `YEAR_LEVEL` varchar(255) NOT NULL,
-  `UNIT` varchar(255) NOT NULL
+  `YEAR_LEVEL` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`SUBJECT_ID`, `SUBJECT`, `YEAR_LEVEL`, `UNIT`) VALUES
-(2, 'Math', 'Grade 7', '3'),
-(3, 'English', 'Grade 7', '3');
+INSERT INTO `subjects` (`SUBJECT_ID`, `SUBJECT`, `YEAR_LEVEL`) VALUES
+(2, 'Math', 'Grade 7'),
+(3, 'English', 'Grade 8'),
+(5, 'Science', 'Grade 9'),
+(6, 'Filipino', 'Grade 10');
 
 -- --------------------------------------------------------
 
@@ -217,6 +289,13 @@ INSERT INTO `users` (`USER_ID`, `USERNAME`, `EMAIL`, `PASSWORD`, `STATUS`) VALUE
 --
 
 --
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`GRADE_ID`),
+  ADD KEY `cons_student_id` (`STUDENT_ID`);
+
+--
 -- Indexes for table `instructors`
 --
 ALTER TABLE `instructors`
@@ -239,6 +318,19 @@ ALTER TABLE `schedules`
 --
 ALTER TABLE `sections`
   ADD PRIMARY KEY (`SECTION_ID`);
+
+--
+-- Indexes for table `shs_grades`
+--
+ALTER TABLE `shs_grades`
+  ADD PRIMARY KEY (`GRADE_ID`),
+  ADD KEY `xxx` (`STUDENT_ID`);
+
+--
+-- Indexes for table `shs_subjects`
+--
+ALTER TABLE `shs_subjects`
+  ADD PRIMARY KEY (`SUBJECT_ID`);
 
 --
 -- Indexes for table `strands`
@@ -275,6 +367,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `grades`
+--
+ALTER TABLE `grades`
+  MODIFY `GRADE_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `instructors`
 --
 ALTER TABLE `instructors`
@@ -296,7 +394,19 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `SECTION_ID` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `SECTION_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `shs_grades`
+--
+ALTER TABLE `shs_grades`
+  MODIFY `GRADE_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `shs_subjects`
+--
+ALTER TABLE `shs_subjects`
+  MODIFY `SUBJECT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `strands`
@@ -308,13 +418,13 @@ ALTER TABLE `strands`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `STUDENT_ID` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `STUDENT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `SUBJECT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `SUBJECT_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `term`
@@ -327,6 +437,22 @@ ALTER TABLE `term`
 --
 ALTER TABLE `users`
   MODIFY `USER_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `grades`
+--
+ALTER TABLE `grades`
+  ADD CONSTRAINT `cons_student_id` FOREIGN KEY (`STUDENT_ID`) REFERENCES `students` (`STUDENT_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shs_grades`
+--
+ALTER TABLE `shs_grades`
+  ADD CONSTRAINT `xxx` FOREIGN KEY (`STUDENT_ID`) REFERENCES `students` (`STUDENT_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

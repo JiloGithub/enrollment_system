@@ -32,9 +32,9 @@ class TermClass extends Database
             $query = $this->save('term', $data);
 
             if ($query) {
-                Redirect::to('admin/academic-term', 'Add Successfully!', 'success');
+                Redirect::to('admin/academic-term.php', 'Add Successfully!', 'success');
             } else {
-                Redirect::to('admin/academic-term', 'Add Failed!', 'danger');
+                Redirect::to('admin/academic-term.php', 'Add Failed!', 'danger');
             }
         });
     }
@@ -61,9 +61,9 @@ class TermClass extends Database
             $query = $this->update('term', $data, $this->where('TERM_ID', Input::Validate('term_id')));
 
             if ($query) {
-                Redirect::to('admin/academic-term', 'Update Successfully!', 'success');
+                Redirect::to('admin/academic-term.php', 'Update Successfully!', 'success');
             } else {
-                Redirect::to('admin/academic-term', 'Update Failed!', 'danger');
+                Redirect::to('admin/academic-term.php', 'Update Failed!', 'danger');
             }
         });
     }
@@ -72,9 +72,9 @@ class TermClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('term', $this->where('TERM_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/academic-term', 'Delete Successfully!', 'success');
+                Redirect::to('admin/academic-term.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/academic-term', 'Delete Failed!', 'danger');
+                Redirect::to('admin/academic-term.php', 'Delete Failed!', 'danger');
             }
         }
     }

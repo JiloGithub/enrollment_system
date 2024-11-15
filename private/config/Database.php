@@ -117,10 +117,10 @@ class Database
             $sql .= " AND $data3";
         }
         if ($data4 !== null) {
-            $sql .= " AND $data3";
+            $sql .= " AND $data4";
         }
         if ($data5 !== null) {
-            $sql .= " AND $data3";
+            $sql .= " AND $data5";
         }
 
         $stmt = $this->conn->prepare($sql);
@@ -130,5 +130,15 @@ class Database
     public function where($column, $data)
     {
         return $column . ' = ' . "'" . $data . "'";
+    }
+    public function left_join($table1, $table2, $matching, $WhereClause = null)
+    {
+        $sql = "SELECT * FROM $table1 LEFT JOIN $table2 ON $matching";
+        if ($WhereClause !== null) {
+            $sql .= " WHERE $WhereClause";
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt;
     }
 }

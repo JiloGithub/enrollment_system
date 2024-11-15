@@ -25,16 +25,16 @@ class SubjectClass extends Database
             $data = [
                 'SUBJECT' => Input::Validate('subject'),
                 'YEAR_LEVEL' => Input::Validate('year_level'),
-                'UNIT' => Input::Validate('unit'),
+
             ];
 
 
             $query = $this->save('subjects', $data);
 
             if ($query) {
-                Redirect::to('admin/subject', 'Add Successfully!', 'success');
+                Redirect::to('admin/subject.php', 'Add Successfully!', 'success');
             } else {
-                Redirect::to('admin/subject', 'Add Failed!', 'danger');
+                Redirect::to('admin/subject.php', 'Add Failed!', 'danger');
             }
         });
     }
@@ -54,16 +54,16 @@ class SubjectClass extends Database
             $data = [
                 'SUBJECT' => Input::Validate('subject'),
                 'YEAR_LEVEL' => Input::Validate('year_level'),
-                'UNIT' => Input::Validate('unit'),
+
             ];
 
 
             $query = $this->update('subjects', $data, $this->where('SUBJECT_ID', Input::Validate('subject_id')));
 
             if ($query) {
-                Redirect::to('admin/subject', 'Update Successfully!', 'success');
+                Redirect::to('admin/subject.php', 'Update Successfully!', 'success');
             } else {
-                Redirect::to('admin/subject', 'Update Failed!', 'danger');
+                Redirect::to('admin/subject.php', 'Update Failed!', 'danger');
             }
         });
     }
@@ -74,9 +74,9 @@ class SubjectClass extends Database
         if (isset($_GET['delete_id'])) {
             $query = $this->delete('subjects', $this->where('SUBJECT_ID', $_GET['delete_id']));
             if ($query) {
-                Redirect::to('admin/subject', 'Delete Successfully!', 'success');
+                Redirect::to('admin/subject.php', 'Delete Successfully!', 'success');
             } else {
-                Redirect::to('admin/subject', 'Delete Failed!', 'danger');
+                Redirect::to('admin/subject.php', 'Delete Failed!', 'danger');
             }
         }
     }

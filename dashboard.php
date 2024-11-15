@@ -6,7 +6,9 @@ spl_autoload_register(function ($class) {
 $dashboard = new DashboardClass();
 $dashboard->index();
 $student = $dashboard->student();
-$subject = $dashboard->subjects();
+$jhs_subject = $dashboard->jhs_subjects();
+$shs_subjects_first_semester = $dashboard->shs_subjects_first_semester();
+$shs_subjects_second_semester = $dashboard->shs_subjects_second_semester();
 // print_r($_SESSION);
 ?>
 <!DOCTYPE html>
@@ -83,31 +85,75 @@ $subject = $dashboard->subjects();
                         <div class="justify-content-center d-flex">
                             <h3>Enrolled Subjects</h3>
                         </div>
-                        <table class="table mt-3 table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>SUBJECT</th>
-                                    <th>UNIT</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 1;
-                                if ($row->ST_STATUS == 'Enrolled' && $subject): ?>
-                                    <?php foreach ($subject as $row): ?>
-                                        <tr>
-                                            <td><?= $no++ ?></td>
-                                            <td><?= $row->SUBJECT ?></td>
-                                            <td><?= $row->UNIT ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
+                        <?php if ($row->ST_YEAR_LEVEL == 'Grade 11' || $row->ST_YEAR_LEVEL == 'Grade 12'): ?>
+                            <table class="table mt-3 table-bordered">
+                                <thead>
                                     <tr>
-                                        <td colspan="3">No Subject!</td>
+                                        <th>NO</th>
+                                        <th>SUBJECT</th>
+                                        <th>SEMESTER</th>
                                     </tr>
-                                <?php endif; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+
+
+                                    <?php $no = 1;
+                                    if ($row->ST_STATUS == 'Enrolled' && $row->ST_SEMESTER == 'First' && $shs_subjects_first_semester): ?>
+                                        <?php foreach ($shs_subjects_first_semester as $row): ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $row->SUBJECT ?></td>
+                                                <td><?= $row->SEMESTER ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php elseif ($row->ST_STATUS == 'Enrolled' && $row->ST_SEMESTER == 'Second' && $shs_subjects_second_semester): ?>
+                                        <?php foreach ($shs_subjects_second_semester as $row): ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $row->SUBJECT ?></td>
+                                                <td><?= $row->SEMESTER ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="3">No Subject!</td>
+                                        </tr>
+                                    <?php endif; ?>
+
+
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <table class="table mt-3 table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>SUBJECT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    <?php $no = 1;
+                                    if ($row->ST_STATUS == 'Enrolled' && $jhs_subject): ?>
+                                        <?php foreach ($jhs_subject as $row): ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $row->SUBJECT ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="3">No Subject!</td>
+                                        </tr>
+                                    <?php endif; ?>
+
+
+                                </tbody>
+                            </table>
+                        <?php endif; ?>
+
+
                     </div>
                 </div>
 

@@ -3,7 +3,7 @@ include 'private/config/autoload.php';
 spl_autoload_register(function ($class) {
     include_once CLASSES . $class . '.php';
 });
-$home = new HomeClass();
+$home = new LoginClass();
 $schedule = $home->teacher_schedule();
 ?>
 <!DOCTYPE html>

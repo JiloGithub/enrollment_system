@@ -39,10 +39,10 @@
         <li class="sidebar-header">
             Manage Enrollment
         </li>
-        <li class="sidebar-item">
+        <!-- <li class="sidebar-item">
             <a href="academic-term.php" class="sidebar-link"><i class="fas fa-fw fa-chart-bar"></i>
                 <span>Academic Term</span></a>
-        </li>
+        </li> -->
         <li class="sidebar-item">
             <a href="subject.php" class="sidebar-link"> <i class="fas fa-fw fa-book"></i>
                 <span>Subjects</span></a>
@@ -51,10 +51,10 @@
             <a href="program.php" class="sidebar-link"><i class="fas fa-chalkboard-teacher"></i>
                 <span>Program</span></a>
         </li> -->
-        <!-- <li class="sidebar-item">
+        <li class="sidebar-item">
             <a href="section.php" class="sidebar-link"><i class="fas fa-building"></i>
                 <span>Sections</span></a>
-        </li> -->
+        </li>
         <li class="sidebar-item">
             <a href="strand.php" class="sidebar-link"><i class="fas fa-chalkboard"></i>
                 <span>Strand</span></a>
